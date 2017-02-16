@@ -8,9 +8,10 @@
     "url": "https://github.com/jandetlefsen/pdfmake-browserified"
   },
   "scripts": {
-    "build": "browserify src/pdfmake.js -g aliasify -s createPdf -p browserify-derequire -d -p [minifyify --map build/pdfmake-browserified.min.js.map --output build/pdfmake-browserified.min.js.map] -o build/pdfmake-browserified.min.js",
+    "build": "browserify src/pdfmake.js -g aliasify -s createPdf -p browserify-derequire -d -o build/pdfmake-browserified.js",
+    "build_min": "browserify src/pdfmake.js -g aliasify -s createPdf -p browserify-derequire -d -p [minifyify --map build/pdfmake-browserified.min.js.map --output build/pdfmake-browserified.min.js.map] -o build/pdfmake-browserified.min.js",
     "build_test": "browserify test/app.js -d -p [minifyify --no-map] -o test/bundle.js",
-    "prestart": "npm run build && npm run build_test",
+    "prestart": "npm run build_min && npm run build_test",
     "start": "node test/server.js"
   },
   "author": "xErik",
